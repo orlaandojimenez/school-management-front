@@ -1,0 +1,10 @@
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filters select,
+.filters button {
+  min-width: 150px;
+}

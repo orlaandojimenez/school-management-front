@@ -13,7 +13,7 @@ const Table = ({
   const renderRows = () => {
     return data.map((row, index) => (
       <tr key={index}>
-        <td>{renderActions(row)}</td>
+        {renderActions && <td>{renderActions(row)}</td>}
         {columns.map((col, idx) => (
           <td key={idx}>{row[col]}</td>
         ))}
@@ -69,10 +69,10 @@ const Table = ({
       <table>
         <thead>
           <tr>
-            <th>Actions</th>
             {columns.map((col, idx) => (
               <th key={idx}>{col}</th>
             ))}
+            {renderActions && <th>Actions</th>}
           </tr>
         </thead>
         <tbody>

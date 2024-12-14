@@ -6,6 +6,7 @@ import Layout from "./components/Layout/Layout";
 import SubjectsView from "./views/Subjects/SubjectsView";
 import GradesView from "./views/Grades/GradesView";
 import StudentsView from "./views/Students/StudentsView";
+import ScoresView from "./views/Scores/ScoresView";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/subjects" element={<SubjectsView />} />
           <Route path="/grades" element={<GradesView />} />
           <Route path="/students" element={<StudentsView />} />
+          <Route path="/scores/:studentId" element={<ScoresView />} />
         </Route>
       </Routes>
     </Router>

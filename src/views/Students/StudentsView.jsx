@@ -13,6 +13,7 @@ import Modal from "../../components/Modal/Modal";
 import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
 import { CiEdit, CiTrash } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 const StudentsView = () => {
   const [students, setStudents] = useState([]);
@@ -31,6 +32,7 @@ const StudentsView = () => {
   const [totalRows, setTotalRows] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [editingStudent, setEditingStudent] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchStudents();
@@ -159,6 +161,16 @@ const StudentsView = () => {
     }
   };
 
+  const handleViewScores = (studentId, firstName, lastName, middleName) => {
+    navigate(`/scores/${studentId}`, {
+      state: {
+        firstName,
+        lastName,
+        middleName,
+      },
+    });
+  };
+
   return (
     <div className="students-container">
       <div className="header">
@@ -191,6 +203,18 @@ const StudentsView = () => {
             </button>
             <button onClick={() => handleDeleteClick(student.id)}>
               <CiTrash />
+            </button>
+            <button
+              onClick={() =>
+                handleViewScores(
+                  student.id,
+                  student.first_name,
+                  student.last_name,
+                  student.middle_name
+                )
+              }
+            >
+              Ver Calificaciones
             </button>
           </>
         )}
